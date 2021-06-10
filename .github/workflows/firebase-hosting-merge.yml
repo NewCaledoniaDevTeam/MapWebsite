@@ -15,8 +15,8 @@ jobs:
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
-          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_NEWCALMAP }}'
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_NCMAP_1775E }}'
           channelId: live
-          projectId: newcalmap
+          projectId: ncmap-1775e
         env:
           FIREBASE_CLI_PREVIEWS: hostingchannels
