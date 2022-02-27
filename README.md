@@ -1,6 +1,6 @@
 # New Caledonia Map Website
 
-## Visit the Website
+## Demos
 [map.newcaledonia.us/map/](https://map.newcaledonia.us/map/)
 
 ## Built with
