@@ -28,6 +28,13 @@ jobs:
       - name: Push If Needed
         if: steps.calibre.outputs.markdown != ''
         run: |
-          git add .
-          git commit -m "Compressed Images - ${{ steps.hash.outputs.sha_short }}"
+          git add /map/dim0_underground/*
+          git commit -m "Underground - ${{ steps.hash.outputs.sha_short }}"
+          git add /map/dim1/*
+          git commit -m "dim1 - ${{ steps.hash.outputs.sha_short }}"
+          git add /map/dim2/*
+          git commit -m "dim2 - ${{ steps.hash.outputs.sha_short }}"
+          git push
+          git add /map/dim0/*
+          git commit -m "dim0 - ${{ steps.hash.outputs.sha_short }}"
           git push
