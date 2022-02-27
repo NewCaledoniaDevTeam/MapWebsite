@@ -28,6 +28,7 @@ jobs:
       - name: Push If Needed
         if: steps.calibre.outputs.markdown != ''
         run: |
+          git config --global http.version HTTP/1.1
           git add map/dim0_underground/*
           git commit -m "Underground - ${{ steps.hash.outputs.sha_short }}"
           git add map/dim1/*
