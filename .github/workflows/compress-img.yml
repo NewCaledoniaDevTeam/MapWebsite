@@ -1,26 +1,33 @@
-name: Compress Images on Push to main branch
+name: Compress Images
 'on':
   push:
     branches:
       - main
 jobs:
   build:
-    name: calibreapp/image-actions
+    name: Compress Images
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v2
+      - name: Sigin to git
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+      - name: Get Hash
+        id: hash
+        run: echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
+        
       - name: Compress Images
         id: calibre
         uses: calibreapp/image-actions@main
         with:
           githubToken: ${{ secrets.GITHUB_TOKEN }}
           compressOnly: true
-      - name: Create New Pull Request If Needed
+          
+      - name: Push If Needed
         if: steps.calibre.outputs.markdown != ''
-        uses: peter-evans/create-pull-request@v3
-        with:
-          title: Compressed Images
-          branch-suffix: timestamp
-          commit-message: Compressed Images
-          body: ${{ steps.calibre.outputs.markdown }}
+        run: |
+          git add .
+          git commit -m "Compressed Images - ${{ steps.hash.outputs.sha_short }}"
+          git push
