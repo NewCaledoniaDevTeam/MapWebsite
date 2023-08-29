@@ -1,7 +1,7 @@
 # New Caledonia Map Website
 
 ## Demos
-[map.newcaledonia.us/map/](https://map.newcaledonia.us/map/)
+[newcalmap.web.app/map/](https://newcalmap.web.app/map/)
 
 ## Built with
 
